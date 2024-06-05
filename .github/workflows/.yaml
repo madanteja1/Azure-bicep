@@ -1,27 +1,25 @@
-name: Deploy Azure VM using Bicep
 
+name: Deploy Azure VM
+ 
 on:
-  push:
-    branches:
-      - main
-
+  workflow_dispatch
+ 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+ 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-
-    - name: Set up Azure CLI
-      uses: azure/setup-cli@v1
-
+ 
+    - name: Log in to Azure
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Deploy Bicep file
+ 
+    - name: Deploy Azure VM
       run: |
         az deployment group create \
-          --resource-group ${{ secrets.rg1 }} \
+          --resource-group 'rg1' \
           --template-file main.bicep \
-          az deployment group create --template-file path/to/your/main.bicep --parameters path/to/your/parameters.json
+          --parameters parameters.json
