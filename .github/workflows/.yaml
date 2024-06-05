@@ -22,6 +22,6 @@ jobs:
     - name: Deploy Bicep file
       run: |
         az deployment group create \
-          --resource-group ${{ secrets.BH-Team }} \
+          --resource-group ${{ secrets.rg1 }} \
           --template-file main.bicep \
           az deployment group create --template-file path/to/your/main.bicep --parameters path/to/your/parameters.json
