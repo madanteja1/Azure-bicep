@@ -19,6 +19,6 @@ jobs:
     - name: Deploy Azure VM
       run: |
         az deployment group create \
-          --resource-group 'rg1' \
+          --resource-group 'BH-Team' \
           --template-file main.bicep \
           --parameters parameters.json
