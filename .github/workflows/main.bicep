@@ -1,5 +1,3 @@
-
-// Define the Virtual Network
 resource vnet 'Microsoft.Network/virtualNetworks@2020-11-01' = {
   name: BICEPvnet
   location: east-us
@@ -20,7 +18,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2020-11-01' = {
   }
 }
 
-// Define the Network Interface
+ Define the Network Interface
 resource nic 'Microsoft.Network/networkInterfaces@2020-11-01' = {
   name: '${mbicep}-nic'
   location: east-us
@@ -39,7 +37,7 @@ resource nic 'Microsoft.Network/networkInterfaces@2020-11-01' = {
   }
 }
 
-// Define the Virtual Machine
+Define the Virtual Machine
 resource vm 'Microsoft.Compute/virtualMachines@2020-12-01' = {
   name: mbicep
   location: east-us
