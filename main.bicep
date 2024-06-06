@@ -1,14 +1,4 @@
-// Define parameters
-param location string = resourceGroup().location
-param vmName string
-param adminUsername string
-param adminPassword string
-param vnetName string = 'myVnet'
-param subnetName string = 'mySubnet'
-param vmSize string = 'Standard_DS1_v2'
-param scriptUrl string
-
-// Define the Virtual Network
+ Define the Virtual Network
 resource vnet 'Microsoft.Network/virtualNetworks@2020-11-01' = {
   name: vnetName
   location: location
@@ -29,7 +19,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2020-11-01' = {
   }
 }
 
-// Define the Network Interface
+ Define the Network Interface
 resource nic 'Microsoft.Network/networkInterfaces@2020-11-01' = {
   name: '${vmName}-nic'
   location: location
@@ -48,7 +38,7 @@ resource nic 'Microsoft.Network/networkInterfaces@2020-11-01' = {
   }
 }
 
-// Define the Virtual Machine
+ Define the Virtual Machine
 resource vm 'Microsoft.Compute/virtualMachines@2020-12-01' = {
   name: vmName
   location: location
