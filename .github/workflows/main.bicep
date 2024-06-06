@@ -65,7 +65,7 @@ resource vm 'Microsoft.Compute/virtualMachines@2020-12-01' = {
     networkProfile: {
       networkInterfaces: [
         {
-          id: /subscriptions/612e9c82-8b7c-4474-b25f-ae40674ee67d/resourceGroups/rg1/providers/Microsoft.Network/networkInterfaces/BHvm
+          id: '/subscriptions/612e9c82-8b7c-4474-b25f-ae40674ee67d/resourceGroups/rg1/providers/Microsoft.Network/networkInterfaces/BHvm'
         }
       ]
     }
