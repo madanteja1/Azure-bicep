@@ -22,5 +22,5 @@ jobs:
       run: |
         az deployment group create \
           --resource-group rg1 \
-          --template-file .github/workflows/main.bicep
-          --parameters .github/workflows/parameters.json
+          --template-file .github/workflows/main.bicep \
+          --parameters .github/workflows/parameters.json 
