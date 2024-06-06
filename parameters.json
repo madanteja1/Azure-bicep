@@ -20,8 +20,5 @@
     "vmSize": {
       "value": "Standard_DS1_v2"
     },
-    "scriptUrl": {
-      "value": "https://my-storage-account.blob.core.windows.net/scripts/myScript.sh"  
-    }
   }
 }
