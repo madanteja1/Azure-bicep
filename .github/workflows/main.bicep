@@ -1,6 +1,7 @@
+// Define the Virtual Network
 resource vnet 'Microsoft.Network/virtualNetworks@2020-11-01' = {
-  name: BICEPvnet
-  location: central-us
+  name: vnetName
+  location: location
   properties: {
     addressSpace: {
       addressPrefixes: [
@@ -9,7 +10,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2020-11-01' = {
     }
     subnets: [
       {
-        name: BICEPsubet
+        name: subnetName
         properties: {
           addressPrefix: '10.0.0.0/24'
         }
@@ -18,10 +19,10 @@ resource vnet 'Microsoft.Network/virtualNetworks@2020-11-01' = {
   }
 }
 
- Define the Network Interface
+// Define the Network Interface
 resource nic 'Microsoft.Network/networkInterfaces@2020-11-01' = {
-  name: '${mbicep}-nic'
-  location: central-us
+  name: '${vmName}-nic'
+  location: location
   properties: {
     ipConfigurations: [
       {
@@ -37,18 +38,18 @@ resource nic 'Microsoft.Network/networkInterfaces@2020-11-01' = {
   }
 }
 
-Define the Virtual Machine
+// Define the Virtual Machine
 resource vm 'Microsoft.Compute/virtualMachines@2020-12-01' = {
-  name: mbicep
-  location: central-us
+  name: vmName
+  location: location
   properties: {
     hardwareProfile: {
       vmSize: vmSize
     }
     osProfile: {
-      computerName: mbicep
-      adminUsername: madan
-      adminPassword: madan12345678
+      computerName: vmName
+      adminUsername: adminUsername
+      adminPassword: adminPassword
     }
     storageProfile: {
       imageReference: {
@@ -70,6 +71,3 @@ resource vm 'Microsoft.Compute/virtualMachines@2020-12-01' = {
     }
   }
 }
-
-// Output the VM's ID
-output vmId string = vm.id
