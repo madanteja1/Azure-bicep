@@ -1,6 +1,6 @@
 resource vnet 'Microsoft.Network/virtualNetworks@2020-11-01' = {
   name: BICEPvnet
-  location: east-us
+  location: central-us
   properties: {
     addressSpace: {
       addressPrefixes: [
@@ -21,7 +21,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2020-11-01' = {
  Define the Network Interface
 resource nic 'Microsoft.Network/networkInterfaces@2020-11-01' = {
   name: '${mbicep}-nic'
-  location: east-us
+  location: central-us
   properties: {
     ipConfigurations: [
       {
@@ -40,7 +40,7 @@ resource nic 'Microsoft.Network/networkInterfaces@2020-11-01' = {
 Define the Virtual Machine
 resource vm 'Microsoft.Compute/virtualMachines@2020-12-01' = {
   name: mbicep
-  location: east-us
+  location: central-us
   properties: {
     hardwareProfile: {
       vmSize: vmSize
@@ -64,7 +64,7 @@ resource vm 'Microsoft.Compute/virtualMachines@2020-12-01' = {
     networkProfile: {
       networkInterfaces: [
         {
-          id: nic.id
+          id: /subscriptions/612e9c82-8b7c-4474-b25f-ae40674ee67d/resourceGroups/rg1/providers/Microsoft.Network/networkInterfaces/BHvm
         }
       ]
     }
@@ -73,4 +73,3 @@ resource vm 'Microsoft.Compute/virtualMachines@2020-12-01' = {
 
 // Output the VM's ID
 output vmId string = vm.id
-    
