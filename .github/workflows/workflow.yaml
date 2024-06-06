@@ -1,26 +1,27 @@
-name: Deploy Azure VM
- 
+
+name: Deploy VM
+
 on:
   push:
     branches:
       - main
- 
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
- 
+
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
- 
-    - name: Log in to Azure
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
- 
-    - name: Deploy Azure VM
-      run: |
-        az deployment group create \
-          --resource-group rg1 \
-          --template-file .github/workflows/main.bicep \
-          --parameters .github/workflows/parameters.json 
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Log in to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy VM using Bicep
+        run: |
+          az deployment group create \
+            --resource-group rg1 \
+            --template-file .github/workflows/main.bicep \
+            --parameters .github/workflows/parameters.json
